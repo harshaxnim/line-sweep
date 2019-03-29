@@ -3,6 +3,8 @@
 #ifndef PLANESWEEPER_H
 #define PLANESWEEPER_H
 
+#include <iostream>
+
 #include "bbst.h"
 #include "node.h"
 
@@ -19,7 +21,27 @@ public:
 
 	typedef struct hoard
 	{
-		
+		typedef enum eventType
+		{
+			start,
+			intersect,
+			end
+		} eventType;
+
+		typedef struct coord
+		{
+			int x;
+			int y;
+		} coord;
+
+		eventType eType;
+		coord eCoord;
+
+		void print()
+		{
+			std::cout << "eType" << eType << std::endl;
+			std::cout << "eCoord" << eCoord.x << ", " << eCoord.y << std::endl;
+		};
 	} hoard;
 };
 

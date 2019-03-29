@@ -7,19 +7,22 @@ extern planeSweeper ps;
 
 void planeSweeper::eventHandler(const node &callingNode)
 {
-	if (callingNode.m_info == "s")
-	{
-		ps.sweepLineStatus->insert(callingNode.m_value);
+	
+	hoard* info = (hoard*) callingNode.m_info;
+	hoard::eventType et = info->eType;
+	hoard::coord ec = info->eCoord;
 
+	if (et == hoard::start)
+	{
 		std::cout << "s" << std::endl;
 	}
-	else if (callingNode.m_info == "e")
-	{
-		std::cout << "e" << std::endl;
-	}
-	else if (callingNode.m_info == "i")
+	else if (et == hoard::intersect)
 	{
 		std::cout << "i" << std::endl;
+	}
+	else if (et == hoard::end)
+	{
+		std::cout << "e" << std::endl;
 	}
 	else
 	{

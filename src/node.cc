@@ -33,7 +33,6 @@ void node::traverse(traversal_mode mode)
 	{
 		case lowestToHighest:
 			if (m_leftChild) m_leftChild->traverse(mode);
-			std::cout << m_value << std::endl;
 			if (callBack) callBack(*this);
 			if (m_rightChild) m_rightChild->traverse(mode);
 			break;
@@ -83,7 +82,7 @@ node * node::remove(float val)
 	return balance();
 }
 
-node * node::insert(float val, std::string info)
+node * node::insert(float val, void *info)
 {
 	if (val <= m_value)
 	{

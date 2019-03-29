@@ -14,55 +14,24 @@ planeSweeper ps;
 int main()
 {
 
-	bbst tree;
-
-	tree.insert(10);
-	tree.insert(9);
-	tree.insert(8);
-	tree.insert(7);
-	tree.insert(6);
-	tree.insert(5);
-	tree.insert(4);
-	tree.insert(3);
-	tree.insert(2);
-	tree.insert(1);
-
-	// tree.traverse(node::lowestToHighest);
-
 	ps.eventQueue->root->callBack = planeSweeper::eventHandler;
 
-
 	std::ifstream planeInput;
-
 	planeInput.open("input/LineSegments.txt");
 
-	std::cout << (bool)planeInput << std::endl;
-
-	int sx, sy, ex, ey;
-	while (planeInput >> sx >> sy >> ex >> ey)
+	int e1x, e1y, e2x, e2y;
+	while (planeInput >> e1x >> e1y >> e2x >> e2y)
 	{
-		hoard *a = new hoard();
-		std::cout << sx << sy << ex << ey << std::endl;
+		hoard *segment_start = new hoard();
+		*segment_start = { e1x < e2x ? hoard::start : hoard::end, {e1x, e1y} };
+		ps.eventQueue->insert(e1x, segment_start);
+
+		hoard *segment_end = new hoard();
+		*segment_end = { e1x >= e2x ? hoard::start : hoard::end, {e2x, e2y} };
+		ps.eventQueue->insert(e2x, segment_end);
 	}
-	ps.eventQueue->insert(10, "s");
-	ps.eventQueue->insert(9, "s");
-	ps.eventQueue->insert(8, "e");
-	ps.eventQueue->insert(7, "e");
 
 	ps.eventQueue->root->traverse(node::lowestToHighest);
-
-	// tree.remove(1);
-	// tree.remove(2);
-	// tree.remove(3);
-	// tree.remove(4);
-	// tree.remove(5);
-	// tree.remove(6);
-	// tree.remove(7);
-	// tree.remove(8);
-	// tree.remove(9);
-	// tree.remove(10);
-
-	// tree.print();
 
 	return 0;
 }

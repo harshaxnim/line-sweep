@@ -5,7 +5,7 @@
 #include "bbst.h"
 
 
-void bbst::insert(float val, std::string info)
+void bbst::insert(float val, void *info)
 {
 	if (root)
 	{

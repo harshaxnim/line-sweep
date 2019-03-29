@@ -2,8 +2,6 @@
 #define node_h
 // node.h
 
-#include <string>
-
 class node
 {
 public:
@@ -22,7 +20,7 @@ public:
 	int m_height              = 1;
 	node *m_leftChild         = nullptr;
 	node *m_rightChild        = nullptr;
-	std::string m_info        = ""; // TODO: Update to be able to store any type. Use void*
+	void *m_info              = nullptr;
 	static void (*callBack)(const node &callingNode);
 
 	typedef enum
@@ -35,7 +33,7 @@ public:
 	bool operator>(const node &rightOperand);
 	bool operator>=(const node &rightOperand);
 
-	node * insert(float val, std::string info = "");
+	node * insert(float val, void *info = nullptr);
 	node * remove(float val);
 	void traverse(traversal_mode mode);
 	void update();
