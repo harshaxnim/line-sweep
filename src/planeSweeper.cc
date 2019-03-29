@@ -12,17 +12,21 @@ void planeSweeper::eventHandler(const node &callingNode)
 	hoard::eventType et = info->eType;
 	hoard::coord ec = info->eCoord;
 
+	std::cout << info->lineID << "\t";
+	std::cout << et << "\t";
+	std::cout << ec.x << ", " << ec.y << std::endl;
+
 	if (et == hoard::start)
 	{
-		std::cout << "s" << std::endl;
+		// TODO
 	}
 	else if (et == hoard::intersect)
 	{
-		std::cout << "i" << std::endl;
+		// TODO
 	}
 	else if (et == hoard::end)
 	{
-		std::cout << "e" << std::endl;
+		// TODO
 	}
 	else
 	{

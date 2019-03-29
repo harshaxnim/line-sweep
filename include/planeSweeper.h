@@ -36,6 +36,7 @@ public:
 
 		eventType eType;
 		coord eCoord;
+		int lineID;
 
 		void print()
 		{
