@@ -186,7 +186,7 @@ node * node::leftRotation()
 	node *replacementNode = m_rightChild;
 	m_rightChild = replacementNode->m_leftChild;
 	replacementNode->m_leftChild = this;
-	
+
 	update();
 	replacementNode->update();
 	return replacementNode;
@@ -197,7 +197,7 @@ node * node::rightRotation()
 	node *replacementNode = m_leftChild;
 	m_leftChild = replacementNode->m_rightChild;
 	replacementNode->m_rightChild = this;
-	
+
 	update();
 	replacementNode->update();
 	return replacementNode;

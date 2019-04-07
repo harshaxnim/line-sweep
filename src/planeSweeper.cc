@@ -7,7 +7,7 @@ extern planeSweeper ps;
 
 void planeSweeper::eventHandler(const node &callingNode)
 {
-	
+
 	hoard* info = (hoard*) callingNode.m_info;
 	hoard::eventType et = info->eType;
 	hoard::coord ec = info->eCoord;

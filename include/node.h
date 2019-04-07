@@ -5,9 +5,9 @@
 class node
 {
 public:
-	
+
 	node(float value) : m_value(value) { m_leftChild = nullptr; m_rightChild = nullptr; };
-	
+
 	node(float value, node *leftChild, node *rightChild)
 		: m_value(value)
 		, m_leftChild(leftChild)
@@ -39,10 +39,10 @@ public:
 	void update();
 	node * balance();
 	void print();
-	
+
 	node * leftRotation();
 	node * rightRotation();
-	
+
 	node * leftLeftCase();
 	node * leftRightCase();
 	node * rightLeftCase();
