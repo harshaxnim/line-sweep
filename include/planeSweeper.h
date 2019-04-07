@@ -11,11 +11,12 @@
 class planeSweeper
 {
 public:
-	planeSweeper(){ eventQueue = new bbst(); sweepLineStatus = new bbst(); };
-	planeSweeper(float val){ eventQueue = new bbst(val); sweepLineStatus = new bbst(val); };
+	planeSweeper(){ eventQueue = new bbst(); sweepLineStatus = new bbst(); lineInfo = new bbst(); };
+	planeSweeper(float val){ eventQueue = new bbst(val); sweepLineStatus = new bbst(val); lineInfo = new bbst(); };
 
 	bbst* eventQueue = nullptr;
 	bbst* sweepLineStatus = nullptr;
+	bbst* lineInfo = nullptr;
 
 	static void eventHandler(const node& callingNode);
 

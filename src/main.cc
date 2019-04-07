@@ -22,13 +22,13 @@ int main()
 	int e1x, e1y, e2x, e2y, lineID = 0;
 	while (planeInput >> e1x >> e1y >> e2x >> e2y)
 	{
-		hoard *segment_start = new hoard();
-		*segment_start = { e1x < e2x ? hoard::start : hoard::end, {e1x, e1y}, lineID };
-		ps.eventQueue->insert(e1x, segment_start);
+		hoard *left_input = new hoard();
+		*left_input = { e1x < e2x ? hoard::start : hoard::end, {e1x, e1y}, lineID };
+		ps.eventQueue->insert(e1x, left_input);
 
-		hoard *segment_end = new hoard();
-		*segment_end = { e1x >= e2x ? hoard::start : hoard::end, {e2x, e2y}, lineID };
-		ps.eventQueue->insert(e2x, segment_end);
+		hoard *right_input = new hoard();
+		*right_input = { e1x >= e2x ? hoard::start : hoard::end, {e2x, e2y}, lineID };
+		ps.eventQueue->insert(e2x, right_input);
 
 		lineID+=1;
 	}
