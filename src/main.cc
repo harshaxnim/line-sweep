@@ -14,7 +14,7 @@ planeSweeper ps;
 int main()
 {
 
-	ps.eventQueue->root->callBack = planeSweeper::eventHandler;
+	// ps.eventQueue->root->m_callBack = planeSweeper::eventHandler;
 
 	std::ifstream planeInput;
 	planeInput.open("input/LineSegments.txt");
@@ -33,7 +33,7 @@ int main()
 		lineID+=1;
 	}
 
-	ps.eventQueue->root->traverse(node::lowestToHighest);
+	ps.eventQueue->traverse(node::lowestToHighest, planeSweeper::eventHandler);
 
 	return 0;
 }

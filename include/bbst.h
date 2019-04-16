@@ -16,6 +16,7 @@ public:
 	void insert(float value, void *info = nullptr);
 	void remove(float value);
 	void traverse(node::traversal_mode mode);
+	void traverse(node::traversal_mode mode, void (*callBack)(const node &callingNode));
 	void print();
 };
 

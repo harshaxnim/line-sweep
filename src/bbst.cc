@@ -40,6 +40,14 @@ void bbst::traverse(node::traversal_mode mode)
 	}
 }
 
+void bbst::traverse(node::traversal_mode mode, void (*callBack)(const node &callingNode))
+{
+	if (root)
+	{
+		root->traverse(mode, callBack);
+	}
+}
+
 void bbst::print()
 {
 	if (root) root->print();

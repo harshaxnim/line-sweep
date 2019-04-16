@@ -25,7 +25,12 @@ bool node::operator>=(const node& rightOperand)
 	return (m_value >= rightOperand.m_value);
 }
 
-void (*node::callBack)(const node& callingNode) = nullptr;
+bool node::operator==(const node& rightOperand)
+{
+	return (m_value == rightOperand.m_value);
+}
+
+void (*node::m_callBack)(const node& callingNode) = nullptr;
 
 void node::traverse(traversal_mode mode)
 {
@@ -33,13 +38,31 @@ void node::traverse(traversal_mode mode)
 	{
 		case lowestToHighest:
 			if (m_leftChild) m_leftChild->traverse(mode);
-			if (callBack) callBack(*this);
+			if (m_callBack) m_callBack(*this);
 			if (m_rightChild) m_rightChild->traverse(mode);
 			break;
 		default:
 			std::cout << "This mode of traversal hasn't been implemented yet." << std::endl;
 	}
+}
 
+void node::traverse(traversal_mode mode, void (*callBack)(const node &callingNode))
+{
+	switch(mode)
+	{
+		case lowestToHighest:
+			if (m_leftChild) m_leftChild->traverse(mode, callBack);
+			if (callBack) callBack(*this);
+			if (m_rightChild) m_rightChild->traverse(mode, callBack);
+			break;
+		case highestToLowest:
+			if (m_rightChild) m_rightChild->traverse(mode, callBack);
+			if (callBack) callBack(*this);
+			if (m_leftChild) m_leftChild->traverse(mode, callBack);
+			break;
+		default:
+			std::cout << "This mode of traversal hasn't been implemented yet." << std::endl;
+	}
 }
 
 node * node::remove(float val)
@@ -153,7 +176,7 @@ node * node::balance()
 		else
 		{
 			return rightRightCase();
-		}	
+		}
 	}
 	// Already balanced
 	return this;

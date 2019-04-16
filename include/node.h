@@ -8,6 +8,8 @@ public:
 
 	node(float value) : m_value(value) { m_leftChild = nullptr; m_rightChild = nullptr; };
 
+	node(float value, void *info) : m_value(value), m_info(info) { m_leftChild = nullptr; m_rightChild = nullptr; };
+
 	node(float value, node *leftChild, node *rightChild)
 		: m_value(value)
 		, m_leftChild(leftChild)
@@ -21,21 +23,24 @@ public:
 	node *m_leftChild         = nullptr;
 	node *m_rightChild        = nullptr;
 	void *m_info              = nullptr;
-	static void (*callBack)(const node &callingNode);
+	static void (*m_callBack)(const node &callingNode);
 
 	typedef enum
 	{
-		lowestToHighest
+		lowestToHighest,
+		highestToLowest
 	} traversal_mode;
 
 	bool operator<(const node &rightOperand);
 	bool operator<=(const node &rightOperand);
 	bool operator>(const node &rightOperand);
 	bool operator>=(const node &rightOperand);
+	bool operator==(const node &rightOperand);
 
 	node * insert(float val, void *info = nullptr);
 	node * remove(float val);
 	void traverse(traversal_mode mode);
+	void traverse(traversal_mode mode, void (*callBack)(const node &callingNode));
 	void update();
 	node * balance();
 	void print();

@@ -20,6 +20,13 @@ public:
 
 	static void eventHandler(const node& callingNode);
 
+	static node *prevNode;
+	static node *thisNode;
+	static node *nextNode;
+	static int nodeTracker;
+	static void adjacentNodesHelper(const node& callingNode);
+	static void resetAdjacentNodesHelper();
+
 	typedef struct hoard
 	{
 		typedef enum eventType
